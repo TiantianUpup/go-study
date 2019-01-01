@@ -2,7 +2,7 @@
 ### 为什么想学习Go语言
 
 ### Go简单介绍
-Go（又称Golang[3]）是Google开发的一种**静态强类型、编译型、并发型**，并**具有垃圾回收功能**的编程语言。Go的语法接近C语言，但是因为之前是学习java语言的，所以学习的过程中会将go和java进行比较
+Go（又称Golang）是Google开发的一种**静态强类型、编译型、并发型**，并**具有垃圾回收功能**的编程语言。Go的语法接近C语言，但是因为之前是学习java语言的，所以学习的过程中会将go和java进行比较
 
 摘自维基百科
 
@@ -15,9 +15,9 @@ Go（又称Golang[3]）是Google开发的一种**静态强类型、编译型、�
 windows下如何配置go环境变量，可以[参考这篇文章](https://blog.csdn.net/defonds/article/details/50538077)
 
 ### Go基础
-###### 程序入口
+##### 程序入口
 每个程序都有包组成，test.go中，包为main，程序由main包开始运行，有点类似于java中的`public static void main(String[] args)`，但是在go中为`func main()`
-###### 基本类型介绍
+##### 基本类型介绍
 基本类型有
 ```
 bool(布尔类型)
@@ -30,7 +30,7 @@ float32 float64
 complex64 complex128
 ```
 
-###### 变量
+##### 变量
 用var申明一个变量，变量类型写在参数名后面，举例说明：
 ```
 var i int
@@ -57,14 +57,14 @@ var (
 )
 ```
 
-###### 常量
+##### 常量
 用const申明一个常量，举例说明
 ```
 const str = "hello"
 ```
 申明了一个字符串常量，其值为hello
 
-###### 函数使用语法
+##### 函数使用语法
 ```
 func func_name(x param_type) return_type {
 }
@@ -101,3 +101,52 @@ func func_name(x param_type) return_type {
   }
   ```
   返回的为i和str这两个变量
+
+##### 循环体
+基本的 for 循环由三部分组成，它们用分号隔开：
+- 初始化语句：在第一次迭代前执行
+- 条件表达式：在每次迭代前求值
+- 后置语句：在每次迭代的结尾执行
+其中初始化语句和后置语句可以不写在循环中  
+如果一个循环中三部分都没有，即`for {}`为死循环
+举例说明
+```
+func forTest1() int {
+	sum := 0
+	for i:= 0; i < 10; i++ {
+		sum += i
+	}
+
+	return sum
+}
+
+```
+和java相比，循环部分没有() 
+
+
+##### 条件判断
+- if  
+    - 和for循环一样，表达式外无需小括号()
+    举例说明
+        ```
+        func ifTest1(x int) {
+            if x < 0 {
+                fmt.Println("x < 0")
+            }
+        }
+        ```
+    -  if语句可以在条件表达式前执行一个简单的语句
+    举例说明
+        ```
+        func ifTest2(x int) {
+            if x := -x; x < 0 {
+                fmt.Println("x < 0")
+            } else {
+                fmt.Println("x > 0")
+            }
+        }
+        ```
+- switch  
+与java中的不同点：
+    - switch中的值不一定是整数
+    - 不需要break

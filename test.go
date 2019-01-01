@@ -13,7 +13,14 @@ func main() {
 	//fmt.Println(returnMulti(1, "hello"))
 
 	//测试指定返回值的名
-	fmt.Println(defineParamName(1, "hello"))
+	//fmt.Println(defineParamName(1, "hello"))
+
+	//测试for循环
+	//fmt.Println(forTest1())
+
+	//if测试
+	//ifTest1(-1)
+	ifTest2(-1)
 }
 
 /*
@@ -45,4 +52,36 @@ func defineParamName(x int, y string) (i int, str string) {
 	i = x
 	str = y
 	return
+}
+
+/*
+	go中的循环体
+*/
+func forTest1() int {
+	sum := 0
+	for i := 0; i < 10; i++ {
+		sum += i
+	}
+
+	return sum
+}
+
+/*
+	go if测试1
+*/
+func ifTest1(x int) {
+	if x < 0 {
+		fmt.Println("x < 0")
+	}
+}
+
+/*
+	go if测试2
+*/
+func ifTest2(x int) {
+	if x := -x; x < 0 {
+		fmt.Println("x < 0")
+	} else {
+		fmt.Println("x > 0")
+	}
 }
