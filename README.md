@@ -47,11 +47,11 @@ func func_name(x param_type) return_type {
   x和y都为int类型，省略了x的参数类型
 - 返回值命名
   举例说明
-```
-func defineParamName(x int, y string) (i int, str string) {
-    i = x
-    str = y
-    return
-}
-```
+  ```
+  func defineParamName(x int, y string) (i int, str string) {
+      i = x
+      str = y
+      return
+  }
+  ```
   返回的为i和str这两个变量
