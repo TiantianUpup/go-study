@@ -31,18 +31,18 @@ func func_name(x param_type) return_type {
 - 支持多值返回
   举例说明
   ```
-    func returnMulti(x int, y string) (int, string) {
-      var i = x * 2
-      return i, y
-    }
+  func returnMulti(x int, y string) (int, string) {
+    var i = x * 2
+    return i, y
+  }
   ```
   返回了int型和string型的两个变量
 - 相同参数类型，除最后一个参数类型不可以省略，前面的参数类型都可以省略
   举例说明：
   ```
-    func add(x, y int) int {
+  func add(x, y int) int {
       return x + y
-    }
+  }
   ```
   x和y都为int类型，省略了x的参数类型
 - 返回值命名
