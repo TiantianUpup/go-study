@@ -17,6 +17,52 @@ windows下如何配置go环境变量，可以[参考这篇文章](https://blog.c
 ### Go基础
 ###### 程序入口
 每个程序都有包组成，test.go中，包为main，程序由main包开始运行，有点类似于java中的`public static void main(String[] args)`，但是在go中为`func main()`
+###### 基本类型介绍
+基本类型有
+```
+bool(布尔类型)
+string(字符串类型)
+int  int8  int16  int32(别名rune)  int64
+uint uint8(别名byte) uint16 uint32 uint64 uintptr
+
+float32 float64
+
+complex64 complex128
+```
+
+###### 变量
+用var申明一个变量，变量类型写在参数名后面，举例说明：
+```
+var i int
+```
+或使用短变量申明
+```
+i : = 2
+```
+申明了一个int类型的变量  
+注意：  
+1.变量可以申明在方法里面，也可以申明在包下  
+2.对于已经初始化的变量可以省略变量类型
+举例说明：
+```
+var i = 2
+```
+申明了一个int型的i变量，其值为2  
+3.对于短变量申请只能使用在函数内，并且需要进行初始化
+变量组的申明，举例说明：
+```
+var (
+    a, b int = 1, 2
+    c, d string = "hello", "world"
+)
+```
+
+###### 常量
+用const申明一个常量，举例说明
+```
+const str = "hello"
+```
+申明了一个字符串常量，其值为hello
 
 ###### 函数使用语法
 ```
