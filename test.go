@@ -20,7 +20,14 @@ func main() {
 
 	//if测试
 	//ifTest1(-1)
-	ifTest2(-1)
+	//ifTest2(-1)
+
+	//switch测试
+	//switchTest("hello")
+	//switchTest("hello world")
+	//switchTest2()
+
+	deferTest()
 }
 
 /*
@@ -84,4 +91,41 @@ func ifTest2(x int) {
 	} else {
 		fmt.Println("x > 0")
 	}
+}
+
+/*
+	switch测试
+*/
+func switchTest(str string) {
+	switch str {
+	case "hello":
+		fmt.Println("hello world")
+	case "new":
+		fmt.Println("new year")
+	default:
+		fmt.Println("default")
+	}
+}
+
+/*
+	switch测试二
+*/
+func switchTest2() {
+	switch str := sayHello(); str {
+	case "hello":
+		fmt.Println("hello world")
+	case "new":
+		fmt.Println("new year")
+	default:
+		fmt.Println("default")
+	}
+}
+
+/*
+	defer测试
+*/
+func deferTest() {
+	defer fmt.Println("world")
+	fmt.Println("first print")
+	defer fmt.Println("hello")
 }

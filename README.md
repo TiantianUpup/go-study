@@ -126,7 +126,8 @@ func forTest1() int {
 
 ##### 条件判断
 - if  
-    - 和for循环一样，表达式外无需小括号()
+条件判断
+    - 和for循环一样，表达式外无需小括号()  
     举例说明
         ```
         func ifTest1(x int) {
@@ -135,7 +136,7 @@ func forTest1() int {
             }
         }
         ```
-    -  if语句可以在条件表达式前执行一个简单的语句
+    -  if语句可以在条件表达式前执行一个简单的语句  
     举例说明
         ```
         func ifTest2(x int) {
@@ -147,6 +148,60 @@ func forTest1() int {
         }
         ```
 - switch  
-与java中的不同点：
-    - switch中的值不一定是整数
-    - 不需要break
+编写一系列if-else的简单写法  
+    举个例子
+    ```
+    func switchTest(str string)  {
+        switch str {
+        case "hello":
+            fmt.Println("hello world")
+        case "new":
+            fmt.Println("new year")
+        default:
+            fmt.Println("default")
+        }
+    }
+    ```
+    可以在switch中执行一个简单的短语  
+    举个例子
+    ```
+    func switchTest2()  {
+        switch str := sayHello(); str {
+        case "hello":
+            fmt.Println("hello world")
+        case "new":
+            fmt.Println("new year")
+        default:
+            fmt.Println("default")
+        }
+    }
+    ```
+    switch中的值最后由sayHello()函数决定  
+    与java中的不同点： 
+    - switch中的值无需为常量，且取值不必为整数  
+    - 不需要break，Go自动提供了在这些语言中每个case后面所需的break语句
+    - switch中可以执行一个简单的短语
+  
+    <!-- 没有条件的switch
+    相当于switch true，默认是default -->
+- defer  
+defer语句会将函数推迟到外层函数返回之后执行。  
+推迟的函数调用会被压入一个栈中。当外层函数返回时，被推迟的函数会按照后进先出的顺序调用  
+举个例子：
+    ```
+    func deferTest()  {
+        defer fmt.Println("world")
+        fmt.Println("first print")
+        defer fmt.Println("hello")
+    }
+    
+    ```
+    运行结果：
+    ```
+    func deferTest()  {
+        defer fmt.Println("world")
+        fmt.Println("first print")
+        defer fmt.Println("hello")
+    }
+    ```
+ 
