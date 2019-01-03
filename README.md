@@ -204,4 +204,90 @@ defer语句会将函数推迟到外层函数返回之后执行。
         defer fmt.Println("hello")
     }
     ```
- 
+##### 指针
+指针保存了值的内存地址  
+类型 *T 是指向 T 类型值的指针。其零值为 nil。
+```
+var p *int
+```
+& 操作符会生成一个指向其操作数的指针。
+```
+i := 42
+p = &i
+```
+表示p指向了保存42的内存地址,&只能与操作数一起使用
+* 操作符表示指针指向的底层值。
+```
+fmt.Println(*p) // 通过指针 p 读取 i
+*p = 21         // 通过指针 p 设置 i
+```
+
+##### 结构体
+结构体是字段的集合  
+语法如下：
+```
+type structName struct {
+}
+```
+有点类似于java中的类，但是没有方法
+- 结构体字段的访问  
+通过`.`进行访问  
+举例说明：
+```
+type Book struct {
+	name string
+	price float32
+}
+
+func structTest() {
+	book := Book{"java核心技术", 110.0}
+	fmt.Println("name: ", book.name)
+	fmt.Println("price: ", book.price)
+}
+
+```
+通过`.`访问到`name`和`price`
+- 结构体文法  
+通过`name:`给结构体的部分字段赋值，赋值顺序与定义的顺序无关  
+举个例子：  
+```
+func structTest2() {
+	book := Book{price:110.0, name: "java核心技术"}
+	fmt.Println("name: ", book.name)
+	fmt.Println("price: ", book.price)
+
+	book2 := Book{price:110.0}
+	fmt.Println("name: ", book2.name)
+	fmt.Println("price: ", book2.price)
+
+	book3 := Book{}
+	fmt.Println("name: ", book3.name)
+	fmt.Println("price: ", book3.price)
+}
+``` 
+如果不初始化为类型的默认值，如int为0，string为空
+##### 数组  
+固定个数的一类数  
+语法:  
+```
+var [count]type
+```
+type：类型
+count：数组的长度
+举个例子
+```
+func arrayTest() {
+	var intArr [3]int
+	intArr[0] = 1
+	fmt.Println(intArr[0])
+
+	intArr2 := [3]int{3, 2, 1}
+	fmt.Println(intArr2[0])
+}
+```
+注意：数组短变量申明不能省略变量类型，intArr2变量`:=`右边说明了变量类型为`[3]int`，长度为3的数组
+##### 切片
+##### Range
+
+### Go方法和接口   
+### Go并发

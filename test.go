@@ -27,7 +27,16 @@ func main() {
 	//switchTest("hello world")
 	//switchTest2()
 
-	deferTest()
+	//defer测试
+	//deferTest()
+
+	//结构体访问测试
+	//structTest()
+
+	//structTest2()
+
+	//数组测试
+	arrayTest()
 }
 
 /*
@@ -128,4 +137,47 @@ func deferTest() {
 	defer fmt.Println("world")
 	fmt.Println("first print")
 	defer fmt.Println("hello")
+}
+
+/*
+	定义Book的结构体
+*/
+type Book struct {
+	name  string
+	price float32
+}
+
+/*
+	结构体测试1
+*/
+func structTest() {
+	book := Book{"java核心技术", 110.0}
+	fmt.Println("name: ", book.name)
+	fmt.Println("price: ", book.price)
+}
+
+/*
+	结构体测试2
+*/
+func structTest2() {
+	book := Book{price: 110.0, name: "java核心技术"}
+	fmt.Println("name: ", book.name)
+	fmt.Println("price: ", book.price)
+
+	book2 := Book{price: 110.0}
+	fmt.Println("name: ", book2.name)
+	fmt.Println("price: ", book2.price)
+
+	book3 := Book{}
+	fmt.Println("name: ", book3.name)
+	fmt.Println("price: ", book3.price)
+}
+
+func arrayTest() {
+	var intArr [3]int
+	intArr[0] = 1
+	fmt.Println(intArr[0])
+
+	intArr2 := [3]int{3, 2, 1}
+	fmt.Println(intArr2[0])
 }
