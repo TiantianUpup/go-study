@@ -272,7 +272,7 @@ func structTest2() {
 ```
 var [count]type
 ```
-type：类型
+type：类型  
 count：数组的长度
 举个例子
 ```
