@@ -17,6 +17,7 @@ windows下如何配置go环境变量，可以[参考这篇文章](https://blog.c
 ### 项目结构说明
 项目结构比较简单  
 basic.go：基础部分的测试代码
+
 ### Go基础
 ##### 程序入口
 每个程序都有包组成，test.go中，包为main，程序由main包开始运行，有点类似于java中的`public static void main(String[] args)`，但是在go中为`func main()`
