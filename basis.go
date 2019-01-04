@@ -36,7 +36,16 @@ func main() {
 	//structTest2()
 
 	//数组测试
-	arrayTest()
+	//arrayTest()
+
+	//切片测试
+	//sliceTest()
+	//sliceTest2()
+	//sliceTest3()
+	//sliceTest4()
+	//sliceTest5()
+	//sliceTest6()
+	sliceTest7()
 }
 
 /*
@@ -173,6 +182,9 @@ func structTest2() {
 	fmt.Println("price: ", book3.price)
 }
 
+/*
+	数组测试
+*/
 func arrayTest() {
 	var intArr [3]int
 	intArr[0] = 1
@@ -180,4 +192,76 @@ func arrayTest() {
 
 	intArr2 := [3]int{3, 2, 1}
 	fmt.Println(intArr2[0])
+}
+
+/*
+	切片测试(基本语法)
+*/
+func sliceTest() {
+	intArr := [5]int{0, 1, 2, 3, 4}
+	slice := intArr[0:3]
+	fmt.Println(slice)
+}
+
+/*
+	切片测试(测试切片是数组的引用)
+*/
+func sliceTest2() {
+	intArr := [5]int{0, 1, 2, 3, 4}
+	slice := intArr[0:3]
+	slice[0] = -1
+	fmt.Println(slice)
+	fmt.Println(intArr)
+}
+
+/*
+	切片测试(测试切片的默认行为)
+*/
+func sliceTest3() {
+	intArr := [5]int{0, 1, 2, 3, 4}
+	slice := intArr[:3]
+	fmt.Println(slice)
+	slice = intArr[1:]
+	fmt.Println(slice)
+}
+
+/*
+	切片测试(测试切片的长度和容量)
+*/
+func sliceTest4() {
+	intArr := [5]int{0, 1, 2, 3, 4}
+	slice := intArr[:3]
+	fmt.Println(len(slice))
+	fmt.Println(cap(slice))
+}
+
+/*
+	切片测试(测试nil切片)
+*/
+func sliceTest5() {
+	var slice []int
+	fmt.Println(slice)
+	fmt.Println(len(slice), cap(slice))
+	if slice == nil {
+		fmt.Println("nil slice")
+	}
+}
+
+/*
+	切片测试(make函数创建切片)
+*/
+func sliceTest6() {
+	slice := make([]int, 5)
+	fmt.Println(slice)
+	fmt.Println(len(slice))
+}
+
+/*
+	切片测试(切片元素的添加)
+*/
+func sliceTest7() {
+	//申明一个切片
+	var slice []int
+	slice = append(slice, 1, 2, 3, 4, 5)
+	fmt.Println(slice)
 }
