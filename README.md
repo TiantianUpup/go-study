@@ -398,8 +398,125 @@ func sliceTest7()  {
 ```
 一次性往slice切片中添加了1、2、3、4、5 总共5个元素
 ##### Range
+for循环的range形式可遍历切片或映射  
+当使用for循环遍历切片时，每次迭代都会返回两个值。第一个值为当前元素的下标，第二个值为该下标所对应元素的一份副本
+举个例子：
+```
+func rangeTest() {
+	//申明一个切片
+	slice := []int{1, 2, 3, 4, 5}
+	for i, value := range slice {
+		fmt.Println(i, value)
+	}
+}
+```
+因为range遍历切片会返回两个值，所以用两个变量i、value分别接收了  
+注意：可以将下标或值赋予 _ 来忽略它  
+举例说明：
+```
+func rangeTest2() {
+	//申明一个切片
+	slice := []int{1, 2, 3, 4, 5}
+	//省略下标
+	for _, value := range slice {
+		fmt.Println(value)
+	}
 
+	//省略值
+	for i := range slice {
+		fmt.Println(i)
+	}
+}
+```
+##### 映射
+存储键值对  
+基本语法：
+```
+var maps = map[keyType]valueType{
+    init Value
+}
+```
+举例说明：
+    ```
+    func mapTest() {
+        intStringMap := map[int]string {
+            1: "a",
+            2: "b",
+        }
+    
+        fmt.Println(intStringMap[1])
+    }
+    ```
+- 用make函数创建映射  
+make函数会返回给定类型的映射，并将其初始化备用  
+    基本语法：
+    ```
+    var maps = make(map[int]string)
+    ```
+举例说明:
+```
+func mapTest1() {
+    maps := make(map[int]string)
+    maps[0] = "a"
+    fmt.Println(maps[0])
+}
+```
+- 修改map
+    - 删除
+    ```
+    delete(maps, key)
+    ```
+    - 查找
+    ```
+    maps[key]
+    ```
+    - 修改
+    ```
+    maps[key] = newValue
+    ```
+    - 双赋值检测某个键是否存在
+    ```
+    elem, ok = m[key]
+    ```
+    若key在m中，ok为true，否则ok为false  
+    若key不在映射中，那么elem是该映射元素类型的零值  
+    同样的，当从映射中读取某个不存在的键时，结果是映射的元素类型的零值  
 
+举例说明：
+```
+func mapTest2() {
+	maps := make(map[int]string)
+	maps[0] = "a"
+	maps[1] = "b"
+	fmt.Println(maps[0])
+	//修改
+	maps[0] = "c"
+	fmt.Println(maps[0])
+	//删除
+	delete(maps, 0)
+	fmt.Println(maps[0])
+	//查找
+	value, i := maps[0]
+	fmt.Println(i, value)
+
+	value, i = maps[1]
+	fmt.Println(i, value)
+}
+```
+##### 函数值
+函数也是值, 它们可以像其它值一样传递  
+函数值可以用作函数的参数或返回值  
+java中函数是不能作为参数的，这和java很不一样  
+举例说明：
+```
+func funcParamTest(funcParam func(string) string) string {
+	return funcParam("hello world")
+}
+```
+- 闭包
+Go 函数可以是一个闭包。闭包是一个函数值，它引用了其函数体之外的变量  
+该函数可以访问并赋予其引用的变量的值  
+换句话说，该函数被“绑定”在了这些变量上。
 ### Go方法和接口   
 
 ### Go并发

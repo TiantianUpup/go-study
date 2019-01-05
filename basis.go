@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	//fmt.Println("Hello World")
@@ -45,7 +47,24 @@ func main() {
 	//sliceTest4()
 	//sliceTest5()
 	//sliceTest6()
-	sliceTest7()
+	//sliceTest7()
+
+	//range测试
+	//rangeTest()
+	//rangeTest2()
+
+	//映射测试
+	//mapTest()
+	//mapTest1()
+	//mapTest2()
+
+	//函数测试
+	function := func(str string) string {
+		return str
+	}
+
+	str := funcParamTest(function)
+	fmt.Println(str)
 }
 
 /*
@@ -264,4 +283,81 @@ func sliceTest7() {
 	var slice []int
 	slice = append(slice, 1, 2, 3, 4, 5)
 	fmt.Println(slice)
+}
+
+/*
+	range测试(基本语法)
+*/
+func rangeTest() {
+	//申明一个切片
+	slice := []int{1, 2, 3, 4, 5}
+	for i, value := range slice {
+		fmt.Println(i, value)
+	}
+}
+
+/*
+	range测试(使用_省略)
+*/
+func rangeTest2() {
+	//申明一个切片
+	slice := []int{1, 2, 3, 4, 5}
+	//省略下标
+	for _, value := range slice {
+		fmt.Println(value)
+	}
+	//省略值
+	for i := range slice {
+		fmt.Println(i)
+	}
+}
+
+/*
+	map测试(基本语法)
+*/
+func mapTest() {
+	intStringMap := map[int]string{
+		1: "a",
+		2: "b",
+	}
+
+	fmt.Println(intStringMap[1])
+}
+
+/*
+	map测试(测试make函数创建映射)
+*/
+func mapTest1() {
+	maps := make(map[int]string)
+	maps[0] = "a"
+	fmt.Println(maps[0])
+}
+
+/*
+	map测试(修改map)
+*/
+func mapTest2() {
+	maps := make(map[int]string)
+	maps[0] = "a"
+	maps[1] = "b"
+	fmt.Println(maps[0])
+	//修改
+	maps[0] = "c"
+	fmt.Println(maps[0])
+	//删除
+	delete(maps, 0)
+	fmt.Println(maps[0])
+	//查找
+	value, i := maps[0]
+	fmt.Println(i, value)
+
+	value, i = maps[1]
+	fmt.Println(i, value)
+}
+
+/*
+	函数值测试
+*/
+func funcParamTest(funcParam func(string) string) string {
+	return funcParam("hello world")
 }
