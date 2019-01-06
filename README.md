@@ -16,8 +16,8 @@ windows下如何配置go环境变量，可以[参考这篇文章](https://blog.c
 
 ### 项目结构说明
 项目结构比较简单  
-basic.go：基础部分的测试代码
-
+Basic.go：基础部分的测试代码
+MethodAndInterface.go：方法和接口部分的测试代码
 ### Go基础
 ##### 程序入口
 每个程序都有包组成，test.go中，包为main，程序由main包开始运行，有点类似于java中的`public static void main(String[] args)`，但是在go中为`func main()`
@@ -517,6 +517,63 @@ func funcParamTest(funcParam func(string) string) string {
 Go 函数可以是一个闭包。闭包是一个函数值，它引用了其函数体之外的变量  
 该函数可以访问并赋予其引用的变量的值  
 换句话说，该函数被“绑定”在了这些变量上。
-### Go方法和接口   
+### Go方法和接口
+##### 方法
+方法就是一类**带特殊的接收者参数**的函数  
+方法接收者在它自己的参数列表内，位于func关键字和方法名之间  
+语法：
+```
+func receiverType functionName() returnType {
+}
+```
+举例说明：
+```
+func (o Orders) functionTest() int {
+	return (o.price) * (o.number)
+}
+```
+等同于下面的函数：
+```
+func functionTest2(o Orders) int {
+	return (o.price) * (o.number)
+}
+```
+测试方法：
+```
+o := Orders{20, 2}
+	fmt.Println(o.functionTest())
+	//等用于
+	fmt.Println(functionTest2(o))
+```
+觉得接收者参数就是方法参数  
+- 接受者参数可以为指针
+举例说明
+    ```
+    func (o *Orders)functionTest3() {
+        //将接受者参数扩大十倍
+        o.price *= 10
+        o.number *= 10
+    }
+    ```
+    指针接收者的方法可以修改接收者指向的值  
+  
+    如果去掉`*`  
+    举例说明：
+    ```
+    func (o Orders)functionTest4() {
+        //扩大十倍
+        o.price *= 10
+        o.number *= 10
+    }
+
+    ```
+    接受者参数的值不会改变，因为函数体里面操作的是接受值的拷贝
+- 使用指针作为接受者需要注意的点
+    - 以指针为接收者的方法被调用时，接收者既能为值又能为指针，自动加上`&`
+    - 以值为接收者的方法被调用时，接收者既能为值又能为指针，自动加上`*`
+- 为什么使用指针作为接受者
+    - 方法能够修改其接收者指向的值
+    - 可以避免在每次调用方法时复制该值。若值的类型为大型结构体时，这样做会更加高效
+#### 接口   
 
 ### Go并发
