@@ -163,7 +163,7 @@ func switchTest2() {
 */
 func deferTest() {
 	defer fmt.Println("world")
-	fmt.Println("first print")
+	fmt.Println("first Print")
 	defer fmt.Println("hello")
 }
 

@@ -575,5 +575,68 @@ o := Orders{20, 2}
     - 方法能够修改其接收者指向的值
     - 可以避免在每次调用方法时复制该值。若值的类型为大型结构体时，这样做会更加高效
 #### 接口   
+接口是一组方法签名定义的集合  
+语法：
+```
+struct interfaceName interface {
+    function1()
+    ...
+    functionn()
+}
+```
+接口的实现和java中非常不一样，go中自我理解是通过接受者参数实现
+举例说明：  
+接口定义：
+```
+type print interface {
+	printParam()
+}
 
+```
+print接口里定义了一个printParam的方法需要去实现  
+接口实现：
+```
+func (book Books) printParam()  {
+	fmt.Println(book.name)
+}
+```
+由接受者参数Book实现了printParam方法  
+注意实现方法的接受者参数不能是基本类型如int、float32这些
+- 接口值  
+接口值可以看做包含值和具体类型的元组  
+值：实现接口的接受者参数的值，可以通过%v获取  
+类型：实现接口的接受者参数的类型，可以通过%T获取  
+举例说明：
+    ```
+    func printInterfaec(p Print)  {
+        fmt.Printf("%v, %T", p, p)
+    }
+    ```
+- 空接口  
+接口中没有定义任何方法  
+空接口可保存任何类型的值，因此可以被用来处理未知类型的值  
+举例说明：
+    ```
+    /*
+        空接口定义
+    */
+    type emptyInterface interface {
+    
+    }
+    
+    /*
+        打印空接口值
+    */
+    func printEmptyInterface(i interface{})  {
+        fmt.Printf("%v, %T\n", i, i)
+    }
+    
+    /*
+        空接口测试
+    */
+    var i interface{} = 44
+    printEmptyInterface(i)
+    i = "hello world"
+    printEmptyInterface(i)
+    ```
 ### Go并发
